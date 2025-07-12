@@ -22,13 +22,14 @@ export const register = createAsyncThunk(
       console.log("REGISTER RESPONSE:", res.data);
       return res.data;
     } catch (error) {
-      console.log("❌ REGISTER ERROR:", error.response?.data || error.message);
-       // Eğer kullanıcı zaten kayıtlıysa özel mesaj döndür
-      if (error.response?.status === 409) {
+        if (error.response?.status === 409) {
         return thunkAPI.rejectWithValue("Bu e-posta adresi zaten kayıtlı.!!!!");
       }
       console.log("hatalarım konsola geliyor ! ") // test amacı ile yazıldı
       return thunkAPI.rejectWithValue( `Bu e-posta adresi zaten kayıtlı  , ${error.message}`);
+      console.log("❌ REGISTER ERROR:", error.response?.data || error.message);
+       // Eğer kullanıcı zaten kayıtlıysa özel mesaj döndür
+    
      
     }
   }
