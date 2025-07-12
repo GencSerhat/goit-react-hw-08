@@ -27,6 +27,7 @@ export const register = createAsyncThunk(
       if (error.response?.status === 409) {
         return thunkAPI.rejectWithValue("Bu e-posta adresi zaten kayıtlı.!!!!");
       }
+      console.log("hatalarım konsola geliyor ! ") // test amacı ile yazıldı
       return thunkAPI.rejectWithValue( `Bu e-posta adresi zaten kayıtlı  , ${error.message}`);
      
     }
